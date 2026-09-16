@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Minuta — TikTok Video Metrics — 28 ago 2026</title></head>
+<body style="margin:0;padding:40px;background:#F5F4F0;font-family:Arial,Helvetica,sans-serif;">
+<table width="680" cellpadding="0" cellspacing="0" border="0" style="background:#fff;border-radius:14px;border:1px solid #E0DED8;padding:36px;margin:0 auto;">
+<tr><td>
+
+  <!-- HEADER -->
+  <p style="font-size:11px;font-weight:bold;color:#9B9B96;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px 0;">Working Session · Minuta</p>
+  <p style="font-size:22px;font-weight:bold;color:#1A1A18;margin:0 0 3px 0;">TikTok — Video Metrics (Cuartiles)</p>
+  <p style="font-size:13px;color:#9B9B96;margin:0 0 28px 0;">28 ago 2026 &nbsp;·&nbsp; Facilitador: Alê Flávio</p>
+
+  <p style="font-size:12px;color:#6B6B67;margin:0 0 24px 0;line-height:1.55;background:#FDFAF3;border:1px solid #EDE8D8;border-radius:8px;padding:12px 14px;">
+  <strong>Contexto:</strong> el tema ganó tracción porque anunciantes vienen reclamando de forma consistente la falta de métricas de video más allá de Viewability (2s). Andy Sica confirmó que algunos ya redujeron inversión en TikTok por esta razón — no es un pedido cosmético, es un riesgo de churn activo.
+  </p>
+
+  <!-- ====== DECISIONES Y AVANCES ====== -->
+  <p style="font-size:10px;font-weight:bold;color:#B0AEA8;letter-spacing:0.07em;text-transform:uppercase;margin:0 0 10px 0;">Decisiones y avances</p>
+
+  <!-- Card 1 - Ámbar: pendiente -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #EDE8D8;border-radius:10px;margin-bottom:10px;background:#FDFAF3;"><tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#FAEEDA;text-align:center;font-size:13px;font-weight:bold;color:#854F0B;line-height:28px;">1</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">TikTok se define como prioridad sobre Online Video — fecha de arranque, sin validar</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Ignacio y Alê acuerdan avanzar primero con cuartiles de TikTok por la presión comercial actual, aunque los porcentajes de visibilidad son bajos (1%–3%) y de todos modos sirven para comparar creativos. Tophandd advierte que Reach (alcance) para días cerrados sigue sin resolverse y es más básico que cuartiles; propone octubre (Q4) como ventana. No hay fecha comprometida — depende de la conversación con Tincho.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Tophandd Caro Fuentes y Alê Flávio: alinear con Tincho la prioridad de cuartiles TikTok frente a P0 vigentes (BCA, Brand Ads, Awareness Impact, Engage Plus) y fijar fecha de inicio.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#854F0B;background:#FAEEDA;padding:2px 8px;border-radius:20px;margin-right:4px;">Sin fecha formal ⚠</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Tophandd / Alê</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;"><div style="width:8px;height:8px;border-radius:50%;background:#EF9F27;"></div></td>
+  </tr></table>
+
+  <!-- Card 2 - Verde: decisión tomada -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #C8E6D4;border-radius:10px;margin-bottom:10px;background:#F5FBF7;"><tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#D0EDD9;text-align:center;font-size:13px;font-weight:bold;color:#1B6B3A;line-height:28px;">2</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Integración vía pipeline estándar de MeliData — se descarta el parche de frontend</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Alvaro proponía un endpoint directo desde frontend a BigQuery para ganar velocidad. Tophandd y Andres Pivatto lo rechazan: rompería el trabajo de Near Real Time y generaría inconsistencias en reportes, repitiendo problemas ya vividos con soluciones paralelas. Se define conectar los cuartiles al stream de MeliData que ya usa el equipo de video, sujeto a un análisis de alcance técnico.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Tophandd Caro Fuentes: coordinar scoping técnico con Alvaro Zenteno para la integración vía MeliData.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#1B6B3A;background:#D0EDD9;padding:2px 8px;border-radius:20px;margin-right:4px;">Decisión tomada ✓</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Tophandd / Alvaro</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;"><div style="width:8px;height:8px;border-radius:50%;background:#2E9A5C;"></div></td>
+  </tr></table>
+
+  <!-- Card 3 - Ámbar: pendiente análisis -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #EDE8D8;border-radius:10px;margin-bottom:10px;background:#FDFAF3;"><tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#FAEEDA;text-align:center;font-size:13px;font-weight:bold;color:#854F0B;line-height:28px;">3</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Reach (alcance) para días cerrados sigue sin resolver — compite por foco con cuartiles</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Tophandd insiste en que Reach es más básico que cuartiles y hoy no está disponible para días cerrados; propone cerrarlo este Q y recién después tomar cuartiles. Queda abierto si el equipo puede resolver ambos en paralelo o si Reach bloquea el arranque de cuartiles.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ The group (Tophandd, Andres Pivatto): definir si Reach debe preceder a cuartiles TikTok según capacidad técnica disponible.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#854F0B;background:#FAEEDA;padding:2px 8px;border-radius:20px;margin-right:4px;">Pendiente análisis</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Tophandd / Pivatto</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;"><div style="width:8px;height:8px;border-radius:50%;background:#EF9F27;"></div></td>
+  </tr></table>
+
+  <!-- Card 4 - Violeta: seguimiento -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;margin-bottom:10px;background:#FAFAFE;"><tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#EEEDFE;text-align:center;font-size:13px;font-weight:bold;color:#534AB7;line-height:28px;">4</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Se abre canal técnico dedicado para el scoping de cuartiles TikTok</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Tophandd se compromete a habilitar un espacio de coordinación técnica junto a Alvaro Zenteno para analizar el alcance y el soporte necesario, con apoyo de Silvio del área técnica.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Tophandd Caro Fuentes: crear el canal técnico y convocar a Alvaro Zenteno.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#534AB7;background:#EEEDFE;padding:2px 8px;border-radius:20px;margin-right:4px;">On track ✓</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Tophandd</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;"><div style="width:8px;height:8px;border-radius:50%;background:#7B72D4;"></div></td>
+  </tr></table>
+
+  <div style="height:28px;"></div>
+
+  <!-- ====== PRÓXIMOS PASOS ====== -->
+  <p style="font-size:10px;font-weight:bold;color:#B0AEA8;letter-spacing:0.07em;text-transform:uppercase;margin:0 0 10px 0;">Próximos pasos</p>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;overflow:hidden;">
+    <tr style="background:#F5F4F0;">
+      <td style="padding:8px 14px;font-size:10px;font-weight:bold;color:#9B9B96;letter-spacing:0.05em;text-transform:uppercase;width:28%;">Responsable</td>
+      <td style="padding:8px 14px;font-size:10px;font-weight:bold;color:#9B9B96;letter-spacing:0.05em;text-transform:uppercase;">Acción</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Tophandd Caro Fuentes</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Investigar viabilidad técnica de integrar los cuartiles de TikTok al pipeline de MeliData en vez de una solución paralela.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;background:#FAFAF8;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Tophandd / Alê / Andy</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Alinear con Tincho la prioridad de cuartiles TikTok frente a otras iniciativas y definir fecha de inicio clara.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Tophandd Caro Fuentes</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Crear canal técnico para coordinar alcance y soporte de la integración de cuartiles con Alvaro Zenteno.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;background:#FAFAF8;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">The group</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Evaluar si Reach debe priorizarse antes que los cuartiles de TikTok según necesidad técnica y de negocio.</td>
+    </tr>
+  </table>
+
+  <div style="height:28px;"></div>
+  <p style="font-size:11px;color:#C0BEB8;margin:0;text-align:center;">TikTok — Video Metrics &nbsp;·&nbsp; Generado por Alê Flávio &nbsp;·&nbsp; 28 ago 2026</p>
+
+</td></tr></table>
+</body></html>

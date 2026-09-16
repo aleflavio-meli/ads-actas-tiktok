@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Minuta Checkpoint TikTok — 10 junio 2026</title>
+</head>
+<body style="margin:0;padding:40px;background:#F5F4F0;font-family:Arial,Helvetica,sans-serif;">
+
+<table width="680" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;border-radius:14px;border:1px solid #E0DED8;padding:36px;margin:0 auto;">
+<tr><td>
+
+  <!-- HEADER -->
+  <p style="font-size:11px;font-weight:bold;color:#9B9B96;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 4px 0;">Biweekly Checkpoint · Minuta</p>
+  <p style="font-size:22px;font-weight:bold;color:#1A1A18;margin:0 0 3px 0;">TikTok × Meli DSP — Integración Social</p>
+  <p style="font-size:13px;color:#9B9B96;margin:0 0 28px 0;">10 de junio de 2026 &nbsp;·&nbsp; 11:00 hs (GMT-3) &nbsp;·&nbsp; Facilitador: Alê Flávio (Producto, Ads)</p>
+
+  <!-- SECTION: DECISIONES -->
+  <p style="font-size:10px;font-weight:bold;color:#B0AEA8;letter-spacing:0.07em;text-transform:uppercase;margin:0 0 10px 0;">Decisiones y avances</p>
+
+  <!-- DECISIÓN 1: ESTADO E2E -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #C8E6D4;border-radius:10px;margin-bottom:10px;background:#F5FBF7;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#D0EDD9;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#1B6B3A;line-height:28px;">1</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Estado E2E: correcciones del flujo de creación finalizadas</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Álvaro reportó tres correcciones clave implementadas tras las últimas pruebas:<br><br>
+      <strong>(a) Line items sin audiencia (flujo Ross):</strong> cuando un line item llega sin audiencia asociada, se mapea el ID provisto por Gary Martínez para que el flujo continúe hacia growth y TikTok.<br><br>
+      <strong>(b) Restricción de fecha de inicio TikTok:</strong> si el proceso de creación demora más de 12 horas, la fecha de inicio se sobrescribe con la fecha actual del mensaje para evitar el bloqueo de validación de TikTok.<br><br>
+      <strong>(c) Impression cost — ventana ampliada:</strong> el proceso de consulta de costo de impresión ahora cubre una ventana más amplia (antes consultaba 4 horas pasadas, lo que generaba pérdida de datos por delay de TikTok). El nuevo proceso garantiza al menos 12 horas de cobertura. Diego está finalizando el desarrollo ese día.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Álvaro / Diego: todas las correcciones estimadas para el 10/06 o 11/06 a más tardar.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#1B6B3A;background:#D0EDD9;padding:2px 8px;border-radius:20px;margin-right:4px;">Correcciones completadas</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Álvaro + Diego</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#2E9A5C;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 2: FLUJO UPDATE ENTIDADES -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #FCEBEB;border-radius:10px;margin-bottom:10px;background:#FEFAFA;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#FCEBEB;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#A32D2D;line-height:28px;">2</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Flujo de modificación de entidades — próxima semana, es el mayor riesgo pendiente</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Las pruebas de la semana pasada validaron el flujo de <em>creación</em> de campañas como exitoso, identificando y resolviendo pendientes menores (reutilización de audiencias; corrección de batches de diario a lifetime). El bloque de mayor riesgo que queda es el <strong>flujo de modificación de entidades ya creadas</strong> (campañas, line items, audiencias). Andy destacó explícitamente que este es el mayor riesgo antes del lanzamiento.<br><br>
+      Objetivo: desarrollo durante la semana del 16/06, pruebas hacia el viernes 19/06. Si todo va bien, la semana del 22/06 se podría abrir a usuarios internos.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Alejandro: desarrollar modificaciones de entidades durante la semana del 16/06 y coordinar pruebas hacia el 19/06.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#A32D2D;background:#FCEBEB;padding:2px 8px;border-radius:20px;margin-right:4px;">Mayor riesgo pendiente</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#854F0B;background:#FAEEDA;padding:2px 8px;border-radius:20px;">Pruebas: semana 22/06</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#E24B4A;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 3: MÉTRICA 2 SEGUNDOS -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #EDE8D8;border-radius:10px;margin-bottom:10px;background:#FDFAF3;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#FAEEDA;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#854F0B;line-height:28px;">3</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Métrica de visibilidad 2 segundos — TikTok prometió finales de junio, sin SLA ni confirmación formal</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Gonza reportó que TikTok se comprometió verbalmente a tener la métrica lista para finales de junio, pero aún no se recibieron: <strong>(a)</strong> la definición formal del modo de entrega de los eventos, <strong>(b)</strong> el SLA del servicio, ni <strong>(c)</strong> confirmación del proceso de aprobación interna de TikTok (se completó un formulario de seguridad la semana anterior; en proceso).<br><br>
+      Vero alertó sobre el historial consistente de incumplimientos de TikTok con fechas de delivery, incluyendo el proyecto de Impression Tracker que se demoró más de un año. La semana previa migraron servidores de una API sin avisar, lo que afectó operaciones de POM.<br><br>
+      Una vez que TikTok entregue la definición, aún requiere desarrollo interno de Meli (estimado: un par de semanas adicionales). Si la métrica se demora hasta agosto, el equipo evaluará si esperar o lanzar sin ella.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Julieta: hacer doble push a TikTok para obtener SLA y confirmación del modo de entrega. Gonza sigue presionando desde su lado.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#854F0B;background:#FAEEDA;padding:2px 8px;border-radius:20px;margin-right:4px;">⚠ Depende de TikTok</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#534AB7;background:#EEEDFE;padding:2px 8px;border-radius:20px;">ETA prometida: fin de junio</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#EF9F27;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 4: ESTRATEGIA COMUNICACIÓN CANNES -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #C8E6D4;border-radius:10px;margin-bottom:10px;background:#F5FBF7;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#D0EDD9;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#1B6B3A;line-height:28px;">4</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Cannes: estrategia "under-promising" — anunciar alianza sin comprometer fechas ni detalles técnicos</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">El evento de Cannes es un hecho y no está en discusión. El equipo de negocio ya está coordinando materiales con TikTok, y habrá reunión con el equipo de producto de TikTok durante el evento. La decisión de comunicación acordada:<br><br>
+      <strong>Qué se comunica:</strong> la alianza estratégica entre Mercado Libre y TikTok como diferencial que nadie más en el mercado tiene. Foco en propuesta de valor y posicionamiento.<br><br>
+      <strong>Qué NO se comunica:</strong> fechas específicas, detalles de la métrica de 2 segundos ni compromisos técnicos. La postura es <em>under-promise</em> para proteger la reputación en caso de que TikTok no entregue a tiempo.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Julieta lidera la narrativa de Cannes; sin fecha comprometida al mercado.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#1B6B3A;background:#D0EDD9;padding:2px 8px;border-radius:20px;margin-right:4px;">Alineado</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Under-promising strategy</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#2E9A5C;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 5: PLAN CONTINGENCIA -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;margin-bottom:10px;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#E6F1FB;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#185FA5;line-height:28px;">5</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Plan de contingencia: definir respuesta para cada escenario de lanzamiento</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Ante la incertidumbre de TikTok, el equipo acordó no quedar tomados por sorpresa. Julieta se comprometió a validar con Rolo los escenarios posibles y armar un plan de acción claro para cada uno:<br><br>
+      <strong>Escenario A:</strong> TikTok entrega la métrica de 2 segundos a tiempo (finales de junio) → lanzamiento con producto completo.<br><br>
+      <strong>Escenario B:</strong> TikTok no entrega (o demora considerable, ej. agosto+) → decisión sobre si lanzar sin la métrica o esperar. El plan original (antes de la confirmación de TikTok) era salir sin ella.<br><br>
+      El plan de contingencia se compartirá con el grupo via canal para tener todo claro sin necesidad de debatirlo en la próxima reunión.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Julieta: validar escenarios con Rolo y enviar plan de contingencia al canal.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;margin-right:4px;">Julieta + Rolo</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#534AB7;background:#EEEDFE;padding:2px 8px;border-radius:20px;">Vía canal</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#378ADD;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 6: VALIDACIONES PRODUCTO + UX -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;margin-bottom:10px;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#E6F1FB;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#185FA5;line-height:28px;">6</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Validaciones de producto: budget mínimo $100, filtros geo solo L1, preview creativo a mejorar</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Gus presentó el estado de las validaciones de producto:<br><br>
+      <strong>Budget mínimo:</strong> validación de $100 (mínimo TikTok + fee Meli) va en el próximo deploy la semana que viene. Aún no está implementada.<br><br>
+      <strong>Filtros geográficos:</strong> se decidió limitar a <strong>nivel L1 únicamente</strong>. El L2 no se incluye porque la nomenclatura de TikTok no es compatible con la de Meli, lo que generaría inconsistencias.<br><br>
+      <strong>Preview del creativo:</strong> la preview actual reutiliza el componente de Clips y no tiene suficiente verticalidad. Se coordinará con UX una mejora para la siguiente iteración (no es blocker del MVP).<br><br>
+      <strong>Identidad de cuenta:</strong> la marca MercadoLibre aparece en TikTok como nombre de la cuenta — es una restricción de la API, no un bug. Co-branding (ej. Meli + marca anunciante) es una evolución futura, no posible hoy por API. Se mantiene la identidad de cuenta actual.<br><br>
+      <strong>Moderación (Clips):</strong> Alejandro coordinará con Vicky para incluir el proceso de moderación en el backlog de Q3 — no quedarse sin desarrollo disponible como ocurrió este Q.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Gus: agregar validación $100 en próximo deploy. Alejandro: contactar a Vicky para backlog de moderación Q3.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;margin-right:4px;">Geo filtros: solo L1</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#534AB7;background:#EEEDFE;padding:2px 8px;border-radius:20px;">Moderación → Q3 backlog</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#378ADD;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- DECISIÓN 7: AUDIENCIAS Y REPORTING -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;margin-bottom:0;">
+  <tr>
+    <td width="42" valign="top" style="padding:14px 0 14px 14px;">
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td style="width:28px;height:28px;border-radius:50%;background:#FAEEDA;text-align:center;vertical-align:middle;font-size:13px;font-weight:bold;color:#854F0B;line-height:28px;">7</td></tr></table>
+    </td>
+    <td valign="top" style="padding:14px 16px 14px 8px;">
+      <p style="font-size:14px;font-weight:bold;color:#1A1A18;margin:0 0 4px 0;">Desduplicación de audiencias y reporting — cross-check de POC pendiente</p>
+      <p style="font-size:12px;color:#6B6B67;margin:0 0 6px 0;line-height:1.55;">Se discutió la preocupación sobre conteos inflados de usuarios cuando se envían múltiples claves de matching (mail, teléfono, ID de dispositivo). Vero aclaró que esta es una <em>práctica estándar</em> para mejorar el match rate: el usuario no es impactado múltiples veces, solo se mejora la probabilidad de que TikTok lo identifique. Sin embargo, el reporting de las redes sociales sobre audiencias es opaco ("caja negra"), lo que dificulta la validación real.<br><br>
+      El equipo identificó dos checks concretos a realizar sobre los datos de la POC:<br>
+      <strong>(1)</strong> Contrastar los usuarios únicos de la POC con los reportados por TikTok para verificar si hay inflación real.<br>
+      <strong>(2)</strong> Verificar que ningún usuario haya excedido el frequency cap configurado — si ocurriera, indicaría que un mismo usuario fue impactado múltiples veces bajo distintos IDs.<br><br>
+      Vero consultará con Nacho Boldo (quien viene siguiendo este tema con TikTok) y compartirá la info en el canal.</p>
+      <p style="font-size:12px;font-weight:bold;color:#3A3A38;margin:0 0 8px 0;">→ Andy / Álvaro: cross-check eventos POC vs reporte TikTok; validar frequency cap. Vero: consultar a Nacho Boldo y compartir respuesta en el canal.</p>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#854F0B;background:#FAEEDA;padding:2px 8px;border-radius:20px;margin-right:4px;">Validación pendiente</span>
+      <span style="display:inline-block;font-size:10px;font-weight:bold;color:#185FA5;background:#E6F1FB;padding:2px 8px;border-radius:20px;">Andy + Álvaro + Vero</span>
+    </td>
+    <td width="20" valign="top" style="padding:16px 14px 0 0;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#EF9F27;"></div>
+    </td>
+  </tr>
+  </table>
+
+  <!-- SPACER -->
+  <div style="height:28px;"></div>
+
+  <!-- SECTION: PRÓXIMOS PASOS -->
+  <p style="font-size:10px;font-weight:bold;color:#B0AEA8;letter-spacing:0.07em;text-transform:uppercase;margin:0 0 10px 0;">Próximos pasos</p>
+
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E0DED8;border-radius:10px;overflow:hidden;">
+
+    <!-- ROW HEADER -->
+    <tr style="background:#F5F4F0;">
+      <td style="padding:8px 14px;font-size:10px;font-weight:bold;color:#9B9B96;letter-spacing:0.05em;text-transform:uppercase;width:28%;">Responsable</td>
+      <td style="padding:8px 14px;font-size:10px;font-weight:bold;color:#9B9B96;letter-spacing:0.05em;text-transform:uppercase;">Acción</td>
+    </tr>
+
+    <!-- ROWS -->
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Alejandro Brusco</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Desarrollar modificaciones de entidades (flujo de update) durante la semana del 16/06; pruebas hacia el 19/06.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;background:#FAFAF8;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Alejandro Brusco</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Contactar a Vicky para incluir el proceso de moderación en el backlog de Q3.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Julieta Cibeira</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Contactar a TikTok para obtener definición de SLA y estado formal de la métrica de 2 segundos.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;background:#FAFAF8;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Julieta Cibeira</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Validar con Rolo los escenarios de lanzamiento (con/sin métrica) y compartir plan de contingencia con el grupo vía canal.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Veronica Barber</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Consultar a Nacho Boldo sobre duplicación de usuarios en audiencias y compartir la info en el canal.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;background:#FAFAF8;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Andy Sica</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Comparar eventos de la POC vs datos reportados por TikTok para verificar precisión en el reporte de usuarios únicos.</td>
+    </tr>
+    <tr style="border-top:1px solid #EEEDE9;">
+      <td style="padding:11px 14px;font-size:12px;font-weight:bold;color:#1A1A18;vertical-align:top;">Andy Sica</td>
+      <td style="padding:11px 14px;font-size:12px;color:#6B6B67;line-height:1.5;">Validar que no se haya excedido el frequency cap por usuario durante la POC; investigar ráfagas de eventos múltiples para un mismo ID.</td>
+    </tr>
+
+  </table>
+
+  <!-- FOOTER -->
+  <div style="height:28px;"></div>
+  <p style="font-size:11px;color:#C0BEB8;margin:0;text-align:center;">Integración TikTok × Meli DSP &nbsp;·&nbsp; Generado por Alê Flávio &nbsp;·&nbsp; 10 jun 2026</p>
+
+</td></tr>
+</table>
+
+</body>
+</html>

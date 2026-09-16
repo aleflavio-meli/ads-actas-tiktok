@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Actas — TikTok × Meli DSP</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 36px 20px 48px;
+    background: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1a1a2e;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; }
+
+  .header {
+    background: #ffffff;
+    border: 1px solid #e2e4e9;
+    border-radius: 10px;
+    padding: 26px 30px;
+    margin-bottom: 16px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin: 0 0 6px 0;
+  }
+  h1 { font-size: 26px; font-weight: 700; color: #111; margin: 0 0 6px 0; letter-spacing: -0.3px; }
+  .sub { font-size: 14px; color: #64748b; margin: 0 0 20px 0; line-height: 1.6; }
+  .sub code {
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    background: #f1f5f9;
+    color: #64748b;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* ── SUMMARY STRIP ─────────────────────────────────────────────── */
+  .summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 16px; }
+  .sc { border-radius: 10px; padding: 14px 12px; text-align: center; border: 1px solid transparent; border-left-width: 4px; background: #fff; }
+  .sc-minutas { background: #eff6ff; border-color: #bfdbfe; border-left-color: #185FA5; }
+  .sc-agendas { background: #f2f0fe; border-color: #d8d4fb; border-left-color: #534AB7; }
+  .sc-pending { background: #fefce8; border-color: #fde68a; border-left-color: #ca8a04; }
+  .sc-stale   { background: #fef2f2; border-color: #fecaca; border-left-color: #dc2626; }
+  .sn { font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1; margin-bottom: 5px; }
+  .sc-minutas .sn { color: #185FA5; }
+  .sc-agendas .sn { color: #534AB7; }
+  .sc-pending .sn { color: #ca8a04; }
+  .sc-stale   .sn { color: #dc2626; }
+  .sc-label { font-size: 12px; font-weight: 700; color: #374151; margin-bottom: 2px; }
+  .sc-sub   { font-size: 11px; color: #94a3b8; line-height: 1.3; }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #search {
+    flex: 1;
+    min-width: 180px;
+    padding: 9px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    font-size: 13px;
+    background: #fff;
+    color: #1a1a2e;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+  #search:focus { outline: none; border-color: #1d4ed8; }
+  .filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    transition: all 0.15s;
+  }
+  .filter-btn:hover:not(.active) { background: #f1f5f9; border-color: #94a3b8; color: #334155; }
+  .filter-btn.active { background: #1d4ed8; border-color: #1d4ed8; color: #ffffff; box-shadow: 0 2px 8px rgba(29,78,216,0.35); }
+
+  .month-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    margin: 20px 0 8px 0;
+    padding: 8px 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e4e9;
+    border-radius: 8px;
+  }
+
+  .card {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #e2e4e9;
+    border-left-width: 4px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+  .card:hover { border-color: #94a3b8; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .card-minuta { border-left-color: #185FA5; }
+  .card-agenda { border-left-color: #534AB7; }
+  .card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .badge-minuta { background: #E6F1FB; color: #185FA5; border-color: #93c5fd; }
+  .badge-agenda { background: #EEEDFE; color: #534AB7; border-color: #c4b5fd; }
+  .card-date { font-size: 11px; color: #94a3b8; }
+  .card-title { font-size: 14px; font-weight: 700; color: #1e293b; margin: 0 0 6px 0; }
+  .tags span {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 0 5px 4px 0;
+  }
+  .empty { text-align: center; color: #94a3b8; font-size: 13px; padding: 30px 0; }
+  .footer { text-align: center; font-size: 11px; color: #94a3b8; margin-top: 30px; }
+
+  /* ── PENDENCIAS ────────────────────────────────────────────────── */
+  .pend-note { font-size: 13px; color: #64748b; margin: 0 0 16px 0; line-height: 1.6; }
+  .pend-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .pend-table th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: #475569;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e4e9;
+  }
+  .pend-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f4f5f7;
+    vertical-align: top;
+    color: #475569;
+    line-height: 1.5;
+  }
+  .pend-table tr:last-child td { border-bottom: none; }
+  .pend-item { font-weight: 700; color: #1e293b; }
+  .pend-since {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .pend-stale  { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; }
+  .pend-recent { background: #fef9c3; color: #854d0e; border-color: #fde047; }
+  .pend-poc { font-weight: 700; color: #1d4ed8; white-space: nowrap; }
+  .pend-closed td { color: #94a3b8; }
+  .pend-closed .pend-item { color: #94a3b8; text-decoration: line-through; }
+  .pend-closed-date {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+    white-space: nowrap;
+  }
+  .toggle-resolved {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d4ed8;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .toggle-resolved:hover { text-decoration: underline; }
+  #resolved-wrap { display: none; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <p class="eyebrow">Repositorio de actas</p>
+    <h1>TikTok × Meli DSP — Integración Social</h1>
+    <p class="sub">Historial navegable de minutas y agendas del proyecto. Fuente de verdad versionada en git · actualizado a mano hasta que el generador automático (<code>build_index.py</code>) vuelva a correr.</p>
+
+    <div class="summary">
+      <div class="sc sc-minutas">
+        <div class="sn" id="stat-minutas">–</div>
+        <div class="sc-label">Minutas</div>
+        <div class="sc-sub" id="stat-minutas-sub">&nbsp;</div>
+      </div>
+      <div class="sc sc-agendas">
+        <div class="sn" id="stat-agendas">–</div>
+        <div class="sc-label">Agendas</div>
+        <div class="sc-sub" id="stat-agendas-sub">&nbsp;</div>
+      </div>
+      <div class="sc sc-pending">
+        <div class="sn" id="stat-pending">–</div>
+        <div class="sc-label">Pendencias abiertas</div>
+        <div class="sc-sub">ver tabla abajo</div>
+      </div>
+      <div class="sc sc-stale">
+        <div class="sn" id="stat-stale">–</div>
+        <div class="sc-label">Sin novedades &gt;3 sem.</div>
+        <div class="sc-sub" id="stat-stale-sub">&nbsp;</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input id="search" type="text" placeholder="Buscar por título, tema o responsable…">
+      <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="minuta">Minutas</button>
+      <button class="filter-btn" data-filter="agenda">Agendas</button>
+    </div>
+  </div>
+
+  <div class="header">
+    <p class="eyebrow">Pendencias abiertas</p>
+    <p class="pend-note">Compiladas del último checkpoint más ítems anteriores que nunca se marcaron como cerrados explícitamente. Cuando un ítem cierra de verdad, avisá a Alê (o queda registrado al procesar la minuta siguiente) — pasa a "Resueltas" con fecha de cierre, versionado en git.</p>
+    <table class="pend-table" id="pend-table">
+      <tr><th>Ítem</th><th>Abierto desde</th><th>Resumen</th><th>Último status</th><th>POC</th></tr>
+    </table>
+    <button class="toggle-resolved" id="toggle-resolved">Ver resueltas (<span id="resolved-count">0</span>)</button>
+    <div id="resolved-wrap">
+      <table class="pend-table" id="resolved-table"></table>
+    </div>
+  </div>
+
+  <div id="list"></div>
+  <div id="empty" class="empty" style="display:none;">Sin resultados para esa búsqueda.</div>
+
+  <p class="footer">Generado por Alê Flávio · Integración TikTok × Meli DSP</p>
+</div>
+
+<script>
+// Fuente de datos del índice. build_index.py regenera este array a partir
+// de los archivos en actas/minutas/ y actas/agendas/.
+const ENTRIES = [
+  { date: "2026-09-16", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["Chile abierto desde 08/07", "Budget Planner 21/09", "CTR BCA bajo sospecha"], file: "minutas/2026-09-16_checkpoint-mvp.html" },
+  { date: "2026-09-09", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["VCA", "Budget Planner", "Multi Line-Item"], file: "minutas/2026-09-09_checkpoint-mvp.html" },
+  { date: "2026-09-09", type: "agenda", title: "Video Views/Cuartiles y VCA — destrabar bloqueos", tags: ["Bloqueo activo"], file: "agendas/2026-09-09_checkpoint-mvp.html" },
+  { date: "2026-09-02", type: "agenda", title: "Multi Line-Item, Budget Planner y VCA", tags: ["Sin fecha formal"], file: "agendas/2026-09-02_checkpoint.html" },
+  { date: "2026-08-28", type: "minuta", title: "TikTok — Video Metrics (Cuartiles)", tags: ["Working session", "Riesgo de churn"], file: "minutas/2026-08-28_video-metrics.html" },
+  { date: "2026-08-19", type: "agenda", title: "Open issues del Beta y delay de costos", tags: ["MLB/MLM lanzado"], file: "agendas/2026-08-19_checkpoint-mvp.html" },
+  { date: "2026-07-22", type: "agenda", title: "Beta a 5 días — view 2s entregado", tags: ["On track"], file: "agendas/2026-07-22_checkpoint.html" },
+  { date: "2026-07-08", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["Beta 27/07 confirmado", "Pruebas internas OK"], file: "minutas/2026-07-08_checkpoint.html" },
+  { date: "2026-07-08", type: "agenda", title: "Pruebas internas OK, roadmap de lanzamiento", tags: ["Beta 27/07"], file: "agendas/2026-07-08_checkpoint.html" },
+  { date: "2026-06-24", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["Compliance aprobado", "Beta en 2 fases"], file: "minutas/2026-06-24_checkpoint.html" },
+  { date: "2026-06-24", type: "agenda", title: "Compliance TikTok aprobado — foco en 2s y Beta", tags: ["Compliance ✓"], file: "agendas/2026-06-24_checkpoint.html" },
+  { date: "2026-06-10", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["E2E corregido", "Mayor riesgo: modificación de entidades"], file: "minutas/2026-06-10_checkpoint.html" },
+  { date: "2026-05-27", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["Blocker 2s desbloqueado", "Scope MVP: solo Awareness"], file: "minutas/2026-05-27_checkpoint.html" },
+  { date: "2026-05-27", type: "agenda", title: "TikTok confirma 2s en ~30 días", tags: ["Blocker desbloqueado"], file: "agendas/2026-05-27_checkpoint.html" },
+  { date: "2026-05-13", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["Tech Fee 30% confirmado", "Blocker 2s abierto"], file: "minutas/2026-05-13_checkpoint.html" },
+  { date: "2026-04-29", type: "minuta", title: "Checkpoint TikTok × Meli DSP", tags: ["Blocker 2s (Plan B)", "Riesgo alto: copyright musical"], file: "minutas/2026-04-29_checkpoint.html" },
+  { date: "2026-04-29", type: "agenda", title: "Blocker 2s view y roadmap IT", tags: ["Hard blocker"], file: "agendas/2026-04-29_checkpoint.html" },
+];
+
+// Pendencias abiertas. "since" es la fecha en que el ítem se detectó como
+// abierto; al cerrar de verdad, cambiá status a "closed" y agregá closedDate
+// (no se borra la fila — queda en la sección "Resueltas" como registro).
+const AS_OF_DATE = "2026-09-16"; // actualizar cada vez que se revisa esta lista
+const PENDENCIAS = [
+  { item: "Chile bloqueado (whitelisting TikTok)", since: "2026-07-08", summary: "TikTok exige tracción en sites grandes (MLA/MLB/MLM) antes de habilitar Chile, Colombia, Uruguay y Perú.", lastStatus: "Julieta lo impulsó en el summit de TikTok en China (16/09); TikTok mantiene la condición, sin fecha de resolución.", poc: "Julieta Cibeira", status: "open" },
+  { item: "Discrepancia ~6% POM + ~20% audiencias desalineadas", since: "2026-08-19", summary: "Diferencia entre métricas internas y TikTok; usuarios con impresiones que no figuran en la audiencia.", lastStatus: "Análisis pendiente de Andy desde el 19/08 — sin mención en los últimos 2 checkpoints.", poc: "Andy Sica", status: "open" },
+  { item: "CTR de 3% en BCA — posible bug video/imagen", since: "2026-09-16", summary: "CTR inusualmente alto genera sospecha de que el delivery está sirviendo imagen en vez de video.", lastStatus: "Gonza revisa configuración de Smart Delivery con Rafa el mismo día (16/09).", poc: "Gonza de Pró", status: "open" },
+  { item: "Multi Line-Item para TikTok", since: "2026-09-09", summary: "Multiline exclusivo de TikTok, en coordinación con equipo de Grow.", lastStatus: "ETA reconfirmado 05/10; check de cierre de desarrollos pendiente para la semana del 21/09.", poc: "Álvaro Zenteno", status: "open" },
+  { item: "Budget Planner — encendido productivo", since: "2026-09-09", summary: "Habilitación de frontend y primeras campañas de prueba con creativos de Mercado Pago.", lastStatus: "Frontend se enciende el 21/09; evaluación de resultados antes de encender para todos.", poc: "Álvaro Zenteno · Gustavo Monsalve", status: "open" },
+  { item: "Reporte de Video Metrics (cuartiles)", since: "2026-08-28", summary: "Integración vía pipeline de MeliData; bloqueos de filtrado de campañas y doble fuente de datos.", lastStatus: "ETA 21–22/09 sin confirmación de primera mano — equipo de Top de vacaciones.", poc: "Álvaro Zenteno · Tophandd Caro Fuentes", status: "open" },
+  { item: "VCA — PoC catálogo Sportswearmx", since: "2026-09-09", summary: "Campaña bloqueada por sincronización de audiencia DCA a partir del set de producto.", lastStatus: "Sin mención en el checkpoint del 16/09 — confirmar si se destrabó o sigue frenada.", poc: "Damián Cipriani · Gonzalo de Pró", status: "open" },
+  { item: "Estructura de campaña VCA (LI exclusivo vs. fuente única)", since: "2026-09-09", summary: "Decisión pendiente entre tratar a TikTok como fuente de inventario unificada o mantener LI exclusivo.", lastStatus: "Doc de pros/contras entregado; sin decisión formal ni novedades el 16/09.", poc: "Alê Flávio · Álvaro Zenteno", status: "open" },
+  { item: "Métrica de Wartel", since: "2026-09-09", summary: "Validación de métricas vía Excel y query compartida.", lastStatus: "Sin fecha de entrega confirmada; sin novedades el 16/09.", poc: "André Farah · Tophan Caro", status: "open" },
+];
+
+const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d} de ${MESES[m-1]} de ${y}`;
+}
+function monthKey(iso) {
+  const [y, m] = iso.split("-");
+  return `${MESES[Number(m)-1]} ${y}`;
+}
+
+let activeFilter = "todos";
+let query = "";
+
+function latestDateLabel(type) {
+  const dates = ENTRIES.filter(e => e.type === type).map(e => e.date);
+  if (!dates.length) return "sin registros";
+  const latest = dates.reduce((a, b) => (a > b ? a : b));
+  const [y, m, d] = latest.split("-");
+  return `última: ${d}/${m}`;
+}
+
+function renderStats() {
+  document.getElementById("stat-minutas").textContent = ENTRIES.filter(e => e.type === "minuta").length;
+  document.getElementById("stat-agendas").textContent = ENTRIES.filter(e => e.type === "agenda").length;
+  document.getElementById("stat-minutas-sub").textContent = latestDateLabel("minuta");
+  document.getElementById("stat-agendas-sub").textContent = latestDateLabel("agenda");
+}
+
+function fmtShort(iso) {
+  const [y, m, d] = iso.split("-");
+  return `${d}/${m}`;
+}
+function weeksBetween(iso, asOf) {
+  const ms = new Date(asOf) - new Date(iso);
+  return Math.max(0, Math.round(ms / (7 * 24 * 60 * 60 * 1000)));
+}
+
+function renderPendencias() {
+  const open = PENDENCIAS.filter(p => p.status === "open");
+  const closed = PENDENCIAS.filter(p => p.status === "closed");
+  const staleThresholdWeeks = 3;
+
+  const openTable = document.getElementById("pend-table");
+  openTable.innerHTML = "<tr><th>Ítem</th><th>Abierto desde</th><th>Resumen</th><th>Último status</th><th>POC</th></tr>";
+  let staleCount = 0;
+  const staleNames = [];
+  for (const p of open) {
+    const weeks = weeksBetween(p.since, AS_OF_DATE);
+    const isStale = weeks >= staleThresholdWeeks;
+    if (isStale) { staleCount++; staleNames.push(p.item.split(" ").slice(0,2).join(" ").split("—")[0].trim()); }
+    const sinceLabel = weeks === 0 ? `${fmtShort(p.since)} · nuevo` : `${fmtShort(p.since)} · ${weeks} sem.`;
+    const pillClass = isStale ? "pend-stale" : "pend-recent";
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="pend-item">${p.item}</td>
+      <td><span class="pend-since ${pillClass}">${sinceLabel}</span></td>
+      <td>${p.summary}</td>
+      <td>${p.lastStatus}</td>
+      <td class="pend-poc">${p.poc}</td>
+    `;
+    openTable.appendChild(tr);
+  }
+
+  const resolvedTable = document.getElementById("resolved-table");
+  resolvedTable.innerHTML = closed.length
+    ? "<tr><th>Ítem</th><th>Resuelta</th><th>Resumen</th><th>POC</th></tr>"
+    : "";
+  for (const p of closed) {
+    const tr = document.createElement("tr");
+    tr.className = "pend-closed";
+    tr.innerHTML = `
+      <td class="pend-item">${p.item}</td>
+      <td><span class="pend-closed-date">✓ ${fmtShort(p.closedDate || AS_OF_DATE)}</span></td>
+      <td>${p.summary}</td>
+      <td class="pend-poc">${p.poc}</td>
+    `;
+    resolvedTable.appendChild(tr);
+  }
+
+  document.getElementById("resolved-count").textContent = closed.length;
+  document.getElementById("stat-pending").textContent = open.length;
+  document.getElementById("stat-stale").textContent = staleCount;
+  document.getElementById("stat-stale-sub").textContent = staleNames.slice(0,3).join(" · ") || "todo al día";
+}
+
+document.getElementById("toggle-resolved").addEventListener("click", () => {
+  const wrap = document.getElementById("resolved-wrap");
+  const btn = document.getElementById("toggle-resolved");
+  const showing = wrap.style.display === "block";
+  wrap.style.display = showing ? "none" : "block";
+  btn.textContent = (showing ? "Ver resueltas (" : "Ocultar resueltas (") + PENDENCIAS.filter(p => p.status === "closed").length + ")";
+});
+
+function render() {
+  const list = document.getElementById("list");
+  const empty = document.getElementById("empty");
+  list.innerHTML = "";
+
+  const filtered = ENTRIES.filter(e => {
+    if (activeFilter !== "todos" && e.type !== activeFilter) return false;
+    if (!query) return true;
+    const haystack = (e.title + " " + e.tags.join(" ")).toLowerCase();
+    return haystack.includes(query);
+  });
+
+  if (filtered.length === 0) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+
+  let lastMonth = null;
+  for (const e of filtered) {
+    const mk = monthKey(e.date);
+    if (mk !== lastMonth) {
+      const label = document.createElement("div");
+      label.className = "month-label";
+      label.textContent = mk;
+      list.appendChild(label);
+      lastMonth = mk;
+    }
+    const a = document.createElement("a");
+    const cardTypeClass = e.type === "minuta" ? "card-minuta" : "card-agenda";
+    a.className = `card ${cardTypeClass}`;
+    a.href = e.file;
+    a.target = "_blank";
+    const badgeClass = e.type === "minuta" ? "badge-minuta" : "badge-agenda";
+    const badgeLabel = e.type === "minuta" ? "Minuta" : "Agenda";
+    a.innerHTML = `
+      <div class="card-top">
+        <span class="badge ${badgeClass}">${badgeLabel}</span>
+        <span class="card-date">${fmtDate(e.date)}</span>
+      </div>
+      <p class="card-title">${e.title}</p>
+      <div class="tags">${e.tags.map(t => `<span>${t}</span>`).join("")}</div>
+    `;
+    list.appendChild(a);
+  }
+}
+
+document.getElementById("search").addEventListener("input", (ev) => {
+  query = ev.target.value.trim().toLowerCase();
+  render();
+});
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+renderStats();
+renderPendencias();
+render();
+</script>
+</body>
+</html>
