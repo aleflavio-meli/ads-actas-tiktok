@@ -258,7 +258,7 @@
     </div>
   </div>
 
-  <p style="margin:24px 0 14px;padding:12px 16px;border-radius:10px;background:#E6F1FB;color:#185FA5;font-size:13px;"><strong>Recurso:</strong> <a href="recursos/gantt_tiktok_2026-09-30.html" style="color:#185FA5;">Gantt general de TikTok · corte 30/09</a></p>
+  <p style="margin:24px 0 14px;padding:12px 16px;border-radius:10px;background:#E6F1FB;color:#185FA5;font-size:13px;"><strong>Recurso:</strong> <a href="https://docs.google.com/spreadsheets/d/1-X4Uy2-xwpwUgYeuCKeRSp1vR48Ccj2KfVfmsm6YZGc/edit?gid=969415961#gid=969415961" style="color:#185FA5;">Gantt general de TikTok en preparación</a></p>
   <div id="list"></div>
   <div id="empty" class="empty" style="display:none;">Sin resultados para esa búsqueda.</div>
 
@@ -269,7 +269,7 @@
 // Fuente de datos del índice. build_index.py regenera este array a partir
 // de los archivos en actas/minutas/ y actas/agendas/.
 const ENTRIES = [
-  { date: "2026-09-30", type: "agenda", title: "Cuartiles, Multi Line-Item, acceso VCA y Social Metrics", tags: ["Budget Planner habilitado", "Cuartiles en validación", "Multi LI 05/10 por confirmar"], file: "agendas/2026-09-30_checkpoint-mvp.html" },
+  { date: "2026-09-30", type: "agenda", title: "Cuartiles, Multi Line-Item, acceso VCA y scoping Q4", tags: ["Budget Planner habilitado", "Social Metrics por analizar", "Objetivos TikTok a evaluar"], file: "agendas/2026-09-30_checkpoint-mvp.html" },
   { date: "2026-09-16", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["Chile abierto desde 08/07", "Budget Planner 21/09", "CTR VCA bajo sospecha"], file: "minutas/2026-09-16_checkpoint-mvp.html" },
   { date: "2026-09-09", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["VCA", "Budget Planner", "Multi Line-Item"], file: "minutas/2026-09-09_checkpoint-mvp.html" },
   { date: "2026-09-09", type: "agenda", title: "Video Views/Cuartiles y VCA — destrabar bloqueos", tags: ["Bloqueo activo"], file: "agendas/2026-09-09_checkpoint-mvp.html" },
@@ -304,7 +304,8 @@ const PENDENCIAS = [
   { item: "Estructura de campaña VCA (LI exclusivo vs. fuente única)", since: "2026-09-09", summary: "Decisión pendiente entre tratar a TikTok como fuente de inventario unificada o mantener LI exclusivo.", lastStatus: "Doc de pros/contras entregado; sin decisión formal ni novedades el 16/09.", poc: "Alê Flávio · Álvaro Zenteno", status: "open" },
   { item: "Métrica de Cuartil — consistencia", since: "2026-09-09", summary: "Validación de métricas y período histórico confiable.", lastStatus: "Ignacio encontró q50 y complete sin q25/q75 y cuartiles con cero impresiones el 29/09; solicitó acotar el período consultable.", poc: "Ignacio Abad · Tophandd Caro", status: "open" },
   { item: "Acceso a cuentas TikTok para PoC VCA", since: "2026-09-29", summary: "Acceso operativo para ampliar pruebas de VCA sin intermediación manual.", lastStatus: "Alê reiteró pedido a Santiago Montico y Rafael Milani el 29/09; sin ticket ni plazo confirmados.", poc: "Santiago Montico · Rafael Milani", status: "open" },
-  { item: "Social Metrics de TikTok", since: "2026-09-29", summary: "Pedido comercial de comentarios, compartidos y follows en reportes DSP.", lastStatus: "Alê se comprometió a revisar el scoping Q4 con IT el 30/09; impacto y plazo sin validar.", poc: "Ignacio Abad · Alê Flávio", status: "open" },
+  { item: "Social Metrics de TikTok", since: "2026-09-29", summary: "Pedido comercial de comentarios, compartidos y follows en reportes DSP.", lastStatus: "Tema abierto para analizar viabilidad con IT el 30/09; alcance, impacto y responsable de implementación por definir.", poc: "Alê Flávio · IT a definir", status: "open" },
+  { item: "Objetivos Consideración y Conversión para campañas TikTok", since: "2026-09-29", summary: "Evaluar Traffic → Consideración y Sales → Conversión en campañas estándar TikTok, no VCA.", lastStatus: "Hipótesis de Producto; IT debe validar viabilidad, destino VPP de Sales y esfuerzo antes de estimar Q4.", poc: "Alê Flávio · Andy Sica", status: "open" },
 ];
 
 const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
