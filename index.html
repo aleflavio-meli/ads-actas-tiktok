@@ -258,6 +258,7 @@
     </div>
   </div>
 
+  <p style="margin:24px 0 14px;padding:12px 16px;border-radius:10px;background:#E6F1FB;color:#185FA5;font-size:13px;"><strong>Recurso:</strong> <a href="recursos/gantt_tiktok_2026-09-30.html" style="color:#185FA5;">Gantt general de TikTok · corte 30/09</a></p>
   <div id="list"></div>
   <div id="empty" class="empty" style="display:none;">Sin resultados para esa búsqueda.</div>
 
@@ -268,6 +269,7 @@
 // Fuente de datos del índice. build_index.py regenera este array a partir
 // de los archivos en actas/minutas/ y actas/agendas/.
 const ENTRIES = [
+  { date: "2026-09-30", type: "agenda", title: "Cuartiles, Multi Line-Item, acceso VCA y Social Metrics", tags: ["Budget Planner habilitado", "Cuartiles en validación", "Multi LI 05/10 por confirmar"], file: "agendas/2026-09-30_checkpoint-mvp.html" },
   { date: "2026-09-16", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["Chile abierto desde 08/07", "Budget Planner 21/09", "CTR VCA bajo sospecha"], file: "minutas/2026-09-16_checkpoint-mvp.html" },
   { date: "2026-09-09", type: "minuta", title: "Checkpoint MVP TikTok (Prod, IT, Negocio)", tags: ["VCA", "Budget Planner", "Multi Line-Item"], file: "minutas/2026-09-09_checkpoint-mvp.html" },
   { date: "2026-09-09", type: "agenda", title: "Video Views/Cuartiles y VCA — destrabar bloqueos", tags: ["Bloqueo activo"], file: "agendas/2026-09-09_checkpoint-mvp.html" },
@@ -290,17 +292,19 @@ const ENTRIES = [
 // Pendencias abiertas. "since" es la fecha en que el ítem se detectó como
 // abierto; al cerrar de verdad, cambiá status a "closed" y agregá closedDate
 // (no se borra la fila — queda en la sección "Resueltas" como registro).
-const AS_OF_DATE = "2026-09-16"; // actualizar cada vez que se revisa esta lista
+const AS_OF_DATE = "2026-09-30"; // actualizar cada vez que se revisa esta lista
 const PENDENCIAS = [
   { item: "Chile bloqueado (whitelisting TikTok)", since: "2026-07-08", summary: "TikTok exige tracción en sites grandes (MLA/MLB/MLM) antes de habilitar Chile, Colombia, Uruguay y Perú.", lastStatus: "Julieta lo impulsó en el summit de TikTok en China (16/09); TikTok mantiene la condición, sin fecha de resolución.", poc: "Julieta Cibeira", status: "open" },
   { item: "Discrepancia ~6% POM + ~20% audiencias desalineadas", since: "2026-08-19", summary: "Diferencia entre métricas internas y TikTok; usuarios con impresiones que no figuran en la audiencia.", lastStatus: "Análisis pendiente de Andy desde el 19/08 — sin mención en los últimos 2 checkpoints.", poc: "Andy Sica", status: "open" },
-  { item: "CTR de 3% en VCA — posible bug video/imagen", since: "2026-09-16", summary: "CTR inusualmente alto genera sospecha de que el delivery está sirviendo imagen en vez de video.", lastStatus: "Gonza revisa configuración de Smart Delivery con Rafa el mismo día (16/09).", poc: "Gonza de Pró", status: "open" },
-  { item: "Multi Line-Item para TikTok", since: "2026-09-09", summary: "Multiline exclusivo de TikTok, en coordinación con equipo de Grow.", lastStatus: "ETA reconfirmado 05/10; check de cierre de desarrollos pendiente para la semana del 21/09.", poc: "Álvaro Zenteno", status: "open" },
-  { item: "Budget Planner — encendido productivo", since: "2026-09-09", summary: "Habilitación de frontend y primeras campañas de prueba con creativos de Mercado Pago.", lastStatus: "Frontend se enciende el 21/09; evaluación de resultados antes de encender para todos.", poc: "Álvaro Zenteno · Gustavo Monsalve", status: "open" },
-  { item: "Reporte de Video Metrics (cuartiles)", since: "2026-08-28", summary: "Integración vía pipeline de MeliData; bloqueos de filtrado de campañas y doble fuente de datos.", lastStatus: "ETA 21–22/09 sin confirmación de primera mano — equipo de Top de vacaciones.", poc: "Álvaro Zenteno · Tophandd Caro Fuentes", status: "open" },
-  { item: "VCA — PoC catálogo Sportswearmx", since: "2026-09-09", summary: "Campaña bloqueada por sincronización de audiencia DCA a partir del set de producto.", lastStatus: "Sin mención en el checkpoint del 16/09 — confirmar si se destrabó o sigue frenada.", poc: "Damián Cipriani · Gonzalo de Pró", status: "open" },
+  { item: "CTR de 3% en VCA — posible bug video/imagen", since: "2026-09-16", summary: "CTR inusualmente alto genera sospecha de que el delivery está sirviendo imagen en vez de video.", lastStatus: "El 29/09 se compararon días con imagen y video; falta validar la configuración y el resultado del análisis.", poc: "Gonza de Pró", status: "open" },
+  { item: "Multi Line-Item para TikTok", since: "2026-09-09", summary: "Multiline exclusivo de TikTok, en coordinación con equipo de Growth.", lastStatus: "El plan de salidas del 28/09 mantiene LIVE 05/10; falta reconfirmación de pruebas end-to-end y regla de presupuesto por LI.", poc: "Álvaro Zenteno", status: "open" },
+  { item: "Budget Planner — encendido productivo", since: "2026-09-09", summary: "Habilitación de frontend y primeras campañas de prueba con creativos de Mercado Pago.", lastStatus: "Álvaro confirmó feature habilitada para campañas TikTok el 28/09; comunicación comercial a verificar.", poc: "Álvaro Zenteno · Gustavo Monsalve", status: "closed", closedDate: "2026-09-28" },
+  { item: "Reporte de Video Metrics (cuartiles)", since: "2026-08-28", summary: "Reporte específico de TikTok; salida externa sujeta a calidad de datos.", lastStatus: "Despliegue interno confirmado el 24/09; LIVE figuraba para 28/09, pero no hay confirmación de acceso externo al 30/09.", poc: "Tophandd Caro · Ignacio Abad", status: "open" },
+  { item: "VCA — PoC catálogo Sportswearmx", since: "2026-09-09", summary: "PoC de campaña VCA con catálogo TikTok.", lastStatus: "El 29/09 Álvaro reportó una campaña VCA corriendo; sigue faltando acceso a cuentas TikTok para acelerar y expandir las pruebas.", poc: "Álvaro Zenteno · Gonza de Pró", status: "open" },
   { item: "Estructura de campaña VCA (LI exclusivo vs. fuente única)", since: "2026-09-09", summary: "Decisión pendiente entre tratar a TikTok como fuente de inventario unificada o mantener LI exclusivo.", lastStatus: "Doc de pros/contras entregado; sin decisión formal ni novedades el 16/09.", poc: "Alê Flávio · Álvaro Zenteno", status: "open" },
-  { item: "Métrica de Cuartil", since: "2026-09-09", summary: "Validación de métricas vía Excel y query compartida.", lastStatus: "Sin fecha de entrega confirmada; sin novedades el 16/09.", poc: "André Farah · Tophan Caro", status: "open" },
+  { item: "Métrica de Cuartil — consistencia", since: "2026-09-09", summary: "Validación de métricas y período histórico confiable.", lastStatus: "Ignacio encontró q50 y complete sin q25/q75 y cuartiles con cero impresiones el 29/09; solicitó acotar el período consultable.", poc: "Ignacio Abad · Tophandd Caro", status: "open" },
+  { item: "Acceso a cuentas TikTok para PoC VCA", since: "2026-09-29", summary: "Acceso operativo para ampliar pruebas de VCA sin intermediación manual.", lastStatus: "Alê reiteró pedido a Santiago Montico y Rafael Milani el 29/09; sin ticket ni plazo confirmados.", poc: "Santiago Montico · Rafael Milani", status: "open" },
+  { item: "Social Metrics de TikTok", since: "2026-09-29", summary: "Pedido comercial de comentarios, compartidos y follows en reportes DSP.", lastStatus: "Alê se comprometió a revisar el scoping Q4 con IT el 30/09; impacto y plazo sin validar.", poc: "Ignacio Abad · Alê Flávio", status: "open" },
 ];
 
 const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
