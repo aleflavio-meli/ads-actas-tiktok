@@ -6,18 +6,19 @@
   <title>Minuta — TikTok x Meli DSP — 30 sept 2026</title>
   <style>
     :root{font-family:Arial,Helvetica,sans-serif;color:#1A1A18;background:#F5F4F0}
-    body{margin:0;padding:40px 16px}main{max-width:720px;margin:auto;background:#fff;border:1px solid #E0DED8;border-radius:14px;padding:36px;box-sizing:border-box}
+    body{margin:0;padding:40px 16px}main{display:block;width:100%;box-sizing:border-box}
     .eyebrow,.section-title{font-size:10px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:#9B9B96}.eyebrow{margin:0 0 5px}.section-title{margin:26px 0 10px}
     h1{font-size:23px;margin:0 0 5px}header p{font-size:13px;color:#777770;margin:0 0 10px}header .summary{color:#185FA5;background:#E6F1FB;border-radius:9px;padding:11px 13px;line-height:1.5;margin:19px 0 0}
     article{border:1px solid #E0DED8;border-radius:10px;padding:15px 17px;margin:0 0 10px;background:#fff}article.done{border-color:#C8E6D4;background:#F5FBF7}article.open{border-color:#FAE6C8;background:#FFFCF7}
     article h3{font-size:14px;line-height:1.35;margin:0 0 6px}article p{font-size:12px;color:#555550;line-height:1.55;margin:0 0 7px}article .action{font-weight:bold;color:#33332F;margin:9px 0}
     .tag{display:inline-block;font-size:10px;font-weight:bold;border-radius:20px;padding:3px 8px;color:#534AB7;background:#EEEDFE;margin:2px 4px 0 0}.done .tag{color:#1B6B3A;background:#D0EDD9}.open .tag{color:#854F0B;background:#FAEEDA}
-    table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.45}th{text-align:left;background:#F5F4F0;color:#555;padding:9px 10px}td{border-bottom:1px solid #EAE9E5;padding:9px 10px;vertical-align:top}td:first-child{font-weight:bold;width:155px}a{color:#185FA5}footer{font-size:11px;color:#888880;line-height:1.5;margin-top:25px}
-    @media(max-width:600px){body{padding:0}main{padding:22px 16px;border-radius:0}td:first-child{width:100px}}
+    table.steps{width:100%;border-collapse:collapse;font-size:12px;line-height:1.45}table.steps th{text-align:left;background:#F5F4F0;color:#555;padding:9px 10px}table.steps td{border-bottom:1px solid #EAE9E5;padding:9px 10px;vertical-align:top}table.steps td:first-child{font-weight:bold;width:155px}a{color:#185FA5}footer{font-size:11px;color:#888880;line-height:1.5;margin-top:25px}
+    @media(max-width:600px){body{padding:0}table.email-shell{width:100%!important}table.email-shell>tbody>tr>td{padding:22px 16px!important;border-radius:0!important}table.steps td:first-child{width:100px}}
   </style>
 </head>
 <body>
-<main style="width:720px;max-width:100%;margin:0 auto;box-sizing:border-box;background:#fff;border:1px solid #E0DED8;border-radius:14px;padding:36px;">
+<table class="email-shell" role="presentation" width="720" align="center" cellpadding="0" cellspacing="0" border="0" style="width:720px;max-width:100%;margin:0 auto;table-layout:fixed;border-collapse:separate;background:#fff;font:16px Arial,Helvetica,sans-serif;color:#1A1A18;"><tbody><tr><td style="padding:36px;border:1px solid #E0DED8;border-radius:14px;vertical-align:top;">
+<main>
   <header>
     <p class="eyebrow">Checkpoint MVP TikTok (Prod, IT, Negocio) · Minuta</p>
     <h1>TikTok x Meli DSP</h1>
@@ -79,7 +80,7 @@
   </article>
 
   <h2 class="section-title">Próximos pasos</h2>
-  <table aria-label="Próximos pasos"><thead><tr><th>Responsable</th><th>Acción</th></tr></thead><tbody>
+  <table class="steps" aria-label="Próximos pasos"><thead><tr><th>Responsable</th><th>Acción</th></tr></thead><tbody>
     <tr><td>Álvaro Zenteno</td><td>Verificar las cinco campañas con nuevo Budget Planner el 01/10; investigar la reactivación de datos MLA y consistencia de cuartiles con Growth/Tophandd.</td></tr>
     <tr><td>Álvaro Zenteno y Santiago Montico</td><td>Cerrar pruebas de Multi Line-Item y confirmar si la habilitación comercial puede ocurrir el 13/10.</td></tr>
     <tr><td>Santiago Montico</td><td>Compartir hilo y planilla para tickets de acceso TikTok; revisar hasta fin de semana la ventana histórica de Social Metrics.</td></tr>
@@ -93,5 +94,6 @@
   </tbody></table>
   <footer>Fuente: <a href="https://docs.google.com/document/d/199b5zYtnQdvqk2j6bcz2HMuJ_IV4EQF5RkN2mC1bt0g/edit">notas y transcripción de Gemini del checkpoint del 30/09/2026</a>. Los estados reflejan lo dicho en la reunión; las fechas tentativas y propuestas requieren confirmación posterior.</footer>
 </main>
+</td></tr></tbody></table>
 </body>
 </html>
